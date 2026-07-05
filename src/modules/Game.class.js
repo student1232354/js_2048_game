@@ -41,6 +41,7 @@ class Game {
   start() {
     this.status = 'playing';
     this.AddloopclearRandomAdd();
+    this.AddloopclearRandomAdd();
 
 
   }
@@ -49,16 +50,20 @@ class Game {
   restart() {}
 
   AddloopclearRandomAdd () {
-    const Emptycells = [];
-
-    for (let y = 0; y < 4; y++) {
-      for (let x = 0; x < 4; x++) {
-        const currentcellValue = this.board[y][x];
-        if (this.board[y][x] === 0) {
-          Emptycells.push ({ y, x });
-        }
-      }
+const emptyCells = [];
+  for (let y = 0; y < 4; y++) {
+    for (let x = 0; x < 4; x++) {
+      if (this.board[y][x] === 0) { emptyCells.push({ y, x }) };
     }
+  }
+
+  if (emptyCells.length > 0) {
+    const randomIndex = Math.floor(Math.random() * emptyCells.length);
+    const targetCell = emptyCells[randomIndex];
+    const y = targetCell.y;
+    const x = targetCell.x;
+    this.board[y][x] = Math.random() < 0.9 ? 2 : 4;
+  }
 
   //  if (Emptycells.length > 0) {
   //    const randomIndex = Math.floor(Math.random() * Emptycells.length);
