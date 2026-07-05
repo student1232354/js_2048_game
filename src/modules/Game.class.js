@@ -6,23 +6,17 @@
  * Feel free to add more props and methods if needed.
  */
 class Game {
-  /**
-   * Creates a new game instance.
-   *
-   * @param {number[][]} initialState
-   * The initial state of the board.
-   * @default
-   * [[0, 0, 0, 0],
-   *  [0, 0, 0, 0],
-   *  [0, 0, 0, 0],
-   *  [0, 0, 0, 0]]
-   *
-   * If passed, the board will be initialized with the provided
-   * initial state.
-   */
+
   constructor(initialState) {
-    // eslint-disable-next-line no-console
-    console.log(initialState);
+    this.board = initialState || [
+     [0, 0, 0, 0],
+     [0, 0, 0, 0],
+     [0, 0, 0, 0],
+     [0, 0, 0, 0]
+    ]
+
+    this.score = 0;
+    this.status = 'idle';
   }
 
   moveLeft() {}
@@ -30,39 +24,53 @@ class Game {
   moveUp() {}
   moveDown() {}
 
-  /**
-   * @returns {number}
-   */
-  getScore() {}
 
-  /**
-   * @returns {number[][]}
-   */
-  getState() {}
+  getScore() {
+    return this.score;
+  }
 
-  /**
-   * Returns the current game status.
-   *
-   * @returns {string} One of: 'idle', 'playing', 'win', 'lose'
-   *
-   * `idle` - the game has not started yet (the initial state);
-   * `playing` - the game is in progress;
-   * `win` - the game is won;
-   * `lose` - the game is lost
-   */
+
+  getState() {
+    return this.board;
+  }
+
+
   getStatus() {}
 
-  /**
-   * Starts the game.
-   */
-  start() {}
 
-  /**
-   * Resets the game.
-   */
+  start() {
+    this.status = 'playing';
+    this.AddloopclearRandomAdd();
+
+
+  }
+
+
   restart() {}
 
-  // Add your own methods here
+  AddloopclearRandomAdd () {
+    const Emptycells = [];
+
+    for (let y = 0; y < 4; y++) {
+      for (let x = 0; x < 4; x++) {
+        const currentcellValue = this.board[y][x];
+        if (this.board[y][x] === 0) {
+          Emptycells.push ({ y, x });
+        }
+      }
+    }
+
+  //  if (Emptycells.length > 0) {
+  //    const randomIndex = Math.floor(Math.random() * Emptycells.length);
+  //    const targetcell = Emptycells[randomIndex];
+  //    const rnumber = Math.random();
+  //    const randomnumber = rnumber <= 0.1 ? 4 : (rnumber > 0.1 ? 2 : 2);
+//
+  //    this.board[targetcell.y][targetcell.x] = randomnumber;
+  //  }
+  }
 }
 
-module.exports = Game;
+export default Game;
+
+//module.exports = Game;
