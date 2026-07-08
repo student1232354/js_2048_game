@@ -10,6 +10,49 @@ body {
   font-weight: 900;
 }
 
+
+.button1 {
+  text-align: center;
+  width: 150px;
+  height: 50px;
+  color: #000;
+  font-size: medium;
+  background-color: #f9f6f2;
+  border: #776e65;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-left: 130px;
+}
+
+.title {
+  text-align: center;
+}
+
+.anothertitle {
+  text-align: center;
+  font-size: medium;
+}
+
+.showtable {
+  display: none;
+}
+.showtableon {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 420px;
+  height: 320px;
+  z-index: 100;
+  background: #ecdcd0;
+  border-radius: 5px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+}
+
 .field-cell {
   background: #d6cdc4;
   width: 75px;
@@ -19,90 +62,69 @@ body {
   box-sizing: border-box;
   text-align: center;
   vertical-align: center;
+  transition: all 0.3s ease;
 }
 .field-cell--2 {
   background: #eee4da;
-  width: 70px;
-  height: 73px;
   border-radius: 5px;
   text-align: center;
 }
 .field-cell--4 {
   background: #ede0c8;
-  width: 70px;
-  height: 73px;
   text-align: center;
   border-radius: 5px;
 }
 .field-cell--8 {
   background: #f2b179;
   color: #f9f6f2;
-  width: 70px;
-  height: 73px;
   text-align: center;
   border-radius: 5px;
 }
 .field-cell--16 {
   background: #f59563;
   color: #f9f6f2;
-  width: 70px;
-  height: 73px;
   text-align: center;
   border-radius: 5px;
 }
 .field-cell--32 {
   background: #f67c5f;
   color: #f9f6f2;
-  width: 70px;
-  height: 73px;
   text-align: center;
   border-radius: 5px;
 }
 .field-cell--64 {
   background: #f65e3b;
   color: #f9f6f2;
-  width: 70px;
-  height: 73px;
   text-align: center;
   border-radius: 5px;
 }
 .field-cell--128 {
   background: #edcf72;
   color: #f9f6f2;
-  width: 70px;
-  height: 73px;
   text-align: center;
   border-radius: 5px;
 }
 .field-cell--256 {
   background: #edcc61;
   color: #f9f6f2;
-  width: 70px;
-  height: 73px;
   text-align: center;
   border-radius: 5px;
 }
 .field-cell--512 {
   background: #edc850;
   color: #f9f6f2;
-  width: 70px;
-  height: 73px;
   text-align: center;
   border-radius: 5px;
 }
 .field-cell--1024 {
   background: #edc53f;
   color: #f9f6f2;
-  width: 70px;
-  height: 73px;
   text-align: center;
   border-radius: 5px;
 }
 .field-cell--2048 {
   background: #edc22e;
   color: #f9f6f2;
-  width: 70px;
-  height: 73px;
   text-align: center;
   border-radius: 5px;
 }
@@ -153,6 +175,7 @@ h1 {
 
 .controls {
   display: flex;
+  margin-left: 5px;
 }
 
 .button {
@@ -163,8 +186,7 @@ h1 {
   font-family: sans-serif;
   font-weight: 700;
   font-size: 16px;
-  width: 75px;
-  height: 75px;
+
   transition: 0.25s ease background;
 }
 
