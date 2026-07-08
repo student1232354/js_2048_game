@@ -10,7 +10,6 @@ body {
   font-weight: 900;
 }
 
-
 .button1 {
   text-align: center;
   width: 150px;
@@ -37,6 +36,7 @@ body {
 .showtable {
   display: none;
 }
+
 .showtableon {
   display: block;
   position: absolute;
@@ -64,64 +64,75 @@ body {
   vertical-align: center;
   transition: all 0.3s ease;
 }
+
 .field-cell--2 {
   background: #eee4da;
   border-radius: 5px;
   text-align: center;
 }
+
 .field-cell--4 {
   background: #ede0c8;
   text-align: center;
   border-radius: 5px;
 }
+
 .field-cell--8 {
   background: #f2b179;
   color: #f9f6f2;
   text-align: center;
   border-radius: 5px;
 }
+
 .field-cell--16 {
   background: #f59563;
   color: #f9f6f2;
   text-align: center;
   border-radius: 5px;
 }
+
 .field-cell--32 {
   background: #f67c5f;
   color: #f9f6f2;
   text-align: center;
   border-radius: 5px;
 }
+
 .field-cell--64 {
   background: #f65e3b;
   color: #f9f6f2;
   text-align: center;
   border-radius: 5px;
 }
+
 .field-cell--128 {
   background: #edcf72;
   color: #f9f6f2;
   text-align: center;
   border-radius: 5px;
 }
+
 .field-cell--256 {
   background: #edcc61;
   color: #f9f6f2;
   text-align: center;
   border-radius: 5px;
 }
+
 .field-cell--512 {
   background: #edc850;
   color: #f9f6f2;
   text-align: center;
   border-radius: 5px;
 }
+
 .field-cell--1024 {
   background: #edc53f;
   color: #f9f6f2;
   text-align: center;
   border-radius: 5px;
 }
+
 .field-cell--2048 {
   background: #edc22e;
   color: #f9f6f2;
@@ -194,6 +205,7 @@ h1 {
   background: #1dae28;
   font-size: 20px;
 }
+
 .start:hover {
   background: #179921;
 }
@@ -201,6 +213,7 @@ h1 {
 .restart {
   background: #f1b2b2;
 }
+
 .restart:hover {
   background: #f87474;
 }

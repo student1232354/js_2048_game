@@ -251,4 +251,4 @@ for (let y = 2; y >= 0; y--) {
 
 export default Game;
 
-//module.exports = Game;
+module.exports = Game;

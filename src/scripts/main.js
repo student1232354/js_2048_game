@@ -3,7 +3,7 @@
 // Uncomment the next lines to use your game instance in the browser
 
 import Game from '../modules/Game.class.js';
-// const Game = require('../modules/Game.class.js');
+ const Game = require('../modules/Game.class.js');
  const game = new Game();
 const start1 = document.querySelector('.button');
 const start2 = document.querySelector('.button1');
