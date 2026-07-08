@@ -54,7 +54,6 @@ for (let y = 0; y < 4; y++) {
     for (let y = 0; y < 4; y++) {
       for (let x = 2; x >= 0; x--) {
         if (this.status !== 'playing') {
-          console.log('no errors - chaaama');
           return;
         }
 
@@ -169,7 +168,7 @@ for (let y = 2; y >= 0; y--) {
 
   start() {
     if (this.status === 'stop') {
-      return 'restart the game';
+      return;
     } else {
       this.status = 'playing';
       this.AddloopclearRandomAdd();
@@ -242,7 +241,7 @@ for (let y = 2; y >= 0; y--) {
     if (zeros > 0) {
       return;
     } else {
-      console.log('Lose');
+
       this.status = 'stop';
       return true;
     }
