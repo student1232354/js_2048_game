@@ -266,8 +266,6 @@ class Game {
   }
 }
 
-// develop
-
 export default Game;
 
 // module.exports = Game;

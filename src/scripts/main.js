@@ -174,5 +174,5 @@ function likeloop() {
       }
     }
   }
-} // develop
+}
 updateUI();
