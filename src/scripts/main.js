@@ -50,7 +50,8 @@ start1.addEventListener('click', () => {
   if (
     game.status === 'lose' ||
     game.status === 'win' ||
-    game.status === 'idle'
+    game.status === 'idle' ||
+    game.status === 'playing'
   ) {
     game.score = 0;
     game.restart();
