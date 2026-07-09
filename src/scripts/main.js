@@ -1,19 +1,14 @@
 'use strict';
-
 // Uncomment the next lines to use your game instance in the browser
-
 import Game from '../modules/Game.class.js';
 
 // const Game = require('../modules/Game.class.js');
-
 const game = new Game();
 const start1 = document.querySelector('.button');
 
 function updateUI() {
   const currentStatus = game.getStatus();
-
   const messagestart = document.querySelector('.message-start');
-
   const loseMessage = document.querySelector('.message-lose');
   const winmessage = document.querySelector('.message-win');
 
@@ -23,28 +18,28 @@ function updateUI() {
     loseMessage.classList.add('hidden');
   }
 
-  if (currentStatus === 'lose') {
+  if (currentStatus === 'idle') {
+    start1.classList.remove('restart');
+    start1.classList.add('start');
+    start1.textContent = 'Start';
+  } else {
+    start1.classList.remove('start');
+    start1.classList.add('restart');
     start1.textContent = 'Restart';
+  }
 
+  if (currentStatus === 'lose') {
     if (loseMessage) {
       loseMessage.classList.remove('hidden');
     }
-
     likeloop();
     score();
   } else if (currentStatus === 'win') {
-    start1.textContent = 'Restart';
     winmessage.classList.remove('hidden');
     likeloop();
   } else {
     if (loseMessage) {
       loseMessage.classList.add('hidden');
-    }
-
-    if (currentStatus === 'playing') {
-      start1.textContent = 'Playing';
-    } else {
-      start1.textContent = 'Start Game';
     }
   }
 }
@@ -70,25 +65,19 @@ start1.addEventListener('click', () => {
     game.restart();
     likeloop();
   }
-
   likeloop();
   score();
   updateUI();
 });
 
-window.addEventListener('keydown', () => {
+window.addEventListener('keydown', (e) => {
   updateUI();
 
   if (game.status !== 'playing') {
     return;
   }
 
-  if (
-    event.key === 'a' ||
-    event.key === 'A' ||
-    event.key === 'ф' ||
-    (event.key === 'Ф' && game.status === 'playing')
-  ) {
+  if (e.key === 'ArrowLeft') {
     game.moveLeft();
     likeloop();
     score();
@@ -98,15 +87,14 @@ window.addEventListener('keydown', () => {
   }
 });
 
-window.addEventListener('keydown', () => {
+window.addEventListener('keydown', (e) => {
   updateUI();
 
-  if (
-    event.key === 'в' ||
-    event.key === 'В' ||
-    event.key === 'd' ||
-    (event.key === 'D' && game.status === 'playing')
-  ) {
+  if (game.status !== 'playing') {
+    return;
+  }
+
+  if (e.key === 'ArrowRight') {
     game.moveRight();
     likeloop();
     score();
@@ -116,19 +104,14 @@ window.addEventListener('keydown', () => {
   }
 });
 
-window.addEventListener('keydown', () => {
+window.addEventListener('keydown', (e) => {
   updateUI();
 
   if (game.status !== 'playing') {
     return;
   }
 
-  if (
-    event.key === 's' ||
-    event.key === 'S' ||
-    event.key === 'і' ||
-    (event.key === 'І' && game.status === 'playing')
-  ) {
+  if (e.key === 'ArrowDown') {
     game.moveDown();
     likeloop();
     score();
@@ -138,19 +121,14 @@ window.addEventListener('keydown', () => {
   }
 });
 
-window.addEventListener('keydown', () => {
+window.addEventListener('keydown', (e) => {
   updateUI();
 
   if (game.status !== 'playing') {
     return;
   }
 
-  if (
-    event.key === 'w' ||
-    event.key === 'W' ||
-    event.key === 'ц' ||
-    (event.key === 'Ц' && game.status === 'playing')
-  ) {
+  if (e.key === 'ArrowUp') {
     game.moveUp();
     likeloop();
     score();
@@ -162,7 +140,6 @@ window.addEventListener('keydown', () => {
 
 function score() {
   const scorething = game.getScore();
-
   const scoreElement = document.querySelector('.game-score');
 
   if (scoreElement) {
@@ -198,5 +175,4 @@ function likeloop() {
     }
   }
 }
-
 updateUI();
