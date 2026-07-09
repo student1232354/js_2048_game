@@ -10,8 +10,6 @@ body {
   font-weight: 900;
 }
 
-
-
 .field-cell {
   background: #d6cdc4;
   width: 75px;
@@ -22,13 +20,14 @@ body {
   text-align: center;
   vertical-align: center;
   transition: all 0.3s ease;
- //  user-select: none;
+
+  //  user-select: none;
 
   &--2 {
     background: #eee4da;
     width: 70px;
     height: 73px;
-  border-radius: 5px;
+    border-radius: 5px;
     text-align: center;
   }
 
@@ -88,17 +87,16 @@ body {
   &--256 {
     background: #edcc61;
     color: #f9f6f2;
-        width: 70px;
+    width: 70px;
     height: 73px;
     text-align: center;
     border-radius: 5px;
-
   }
 
   &--512 {
     background: #edc850;
     color: #f9f6f2;
-        width: 70px;
+    width: 70px;
     height: 73px;
     text-align: center;
     border-radius: 5px;
@@ -107,7 +105,7 @@ body {
   &--1024 {
     background: #edc53f;
     color: #f9f6f2;
-        width: 70px;
+    width: 70px;
     height: 73px;
     text-align: center;
     border-radius: 5px;
@@ -116,7 +114,7 @@ body {
   &--2048 {
     background: #edc22e;
     color: #f9f6f2;
-        width: 70px;
+    width: 70px;
     height: 73px;
     text-align: center;
     border-radius: 5px;

@@ -3,33 +3,43 @@
 // Uncomment the next lines to use your game instance in the browser
 
 import Game from '../modules/Game.class.js';
-//const Game = require('../modules/Game.class.js');
- const game = new Game();
+
+// const Game = require('../modules/Game.class.js');
+
+const game = new Game();
 const start1 = document.querySelector('.button');
-const start2 = document.querySelector('.button1');
 
 function updateUI() {
   const currentStatus = game.getStatus();
-  const table = document.querySelector('.showtable');
-  const title = document.querySelector('.title');
-  const anothertitle = document.querySelector('.anothertitle');
 
-  if (currentStatus === 'stop') {
+  const messagestart = document.querySelector('.message-start');
+
+  const loseMessage = document.querySelector('.message-lose');
+  const winmessage = document.querySelector('.message-win');
+
+  if (currentStatus === 'playing') {
+    messagestart.classList.add('hidden');
+    winmessage.classList.add('hidden');
+    loseMessage.classList.add('hidden');
+  }
+
+  if (currentStatus === 'lose') {
     start1.textContent = 'Restart';
-    table.classList.add('showtableon');
-    title.textContent = 'Game Over!';
-    anothertitle.textContent = 'Please restart the game';
+
+    if (loseMessage) {
+      loseMessage.classList.remove('hidden');
+    }
+
     likeloop();
     score();
-    game.score = 0;
-  } else if (currentStatus === 'victory') {
-    table.classList.add('showtableon');
-    title.textContent = 'Victory!';
-    anothertitle.textContent = 'Please restart the game';
+  } else if (currentStatus === 'win') {
+    start1.textContent = 'Restart';
+    winmessage.classList.remove('hidden');
     likeloop();
-    game.score = 0;
   } else {
-    table.classList.remove('showtableon');
+    if (loseMessage) {
+      loseMessage.classList.add('hidden');
+    }
 
     if (currentStatus === 'playing') {
       start1.textContent = 'Playing';
@@ -37,26 +47,16 @@ function updateUI() {
       start1.textContent = 'Start Game';
     }
   }
-
-start2.addEventListener('click', () => {
-
-  if (game.status === 'stop' || game.status === 'victory') {
-    game.score = 0;
-    game.restart();
-  }
-
-
-  likeloop();
-  score();
-  updateUI();
-});
-
-};
+}
 
 start1.addEventListener('click', () => {
-  const currentStatus = game.getStatus();
   updateUI();
-  if (game.status === 'stop' || game.status === 'victory') {
+
+  if (
+    game.status === 'lose' ||
+    game.status === 'win' ||
+    game.status === 'idle'
+  ) {
     game.score = 0;
     game.restart();
     likeloop();
@@ -66,24 +66,29 @@ start1.addEventListener('click', () => {
     game.start();
     score();
     likeloop();
-  } else if (game.status === 'stop' || game.status === 'victory') {
+  } else if (game.status === 'lose' || game.status === 'win') {
     game.restart();
     likeloop();
   }
 
-likeloop();
+  likeloop();
   score();
   updateUI();
-
 });
 
-window.addEventListener('keydown', (event => {
+window.addEventListener('keydown', () => {
   updateUI();
-  if (game.status !== 'playing') return;
 
-  if (event.key === 'a' || event.key === 'A' || event.key === 'ф' || event.key === 'Ф' && game.status === 'playing') {
+  if (game.status !== 'playing') {
+    return;
+  }
 
-
+  if (
+    event.key === 'a' ||
+    event.key === 'A' ||
+    event.key === 'ф' ||
+    (event.key === 'Ф' && game.status === 'playing')
+  ) {
     game.moveLeft();
     likeloop();
     score();
@@ -91,15 +96,17 @@ window.addEventListener('keydown', (event => {
     game.Gameover();
     game.getStatus();
   }
-}));
+});
 
-window.addEventListener('keydown', (event => {
-    updateUI();
-  if (game.status !== 'playing') return;
+window.addEventListener('keydown', () => {
+  updateUI();
 
-  if (event.key === 'в' || event.key === 'В' || event.key === 'd' || event.key === 'D' && game.status === 'playing') {
-
-
+  if (
+    event.key === 'в' ||
+    event.key === 'В' ||
+    event.key === 'd' ||
+    (event.key === 'D' && game.status === 'playing')
+  ) {
     game.moveRight();
     likeloop();
     score();
@@ -107,15 +114,21 @@ window.addEventListener('keydown', (event => {
     game.Gameover();
     game.getStatus();
   }
-}));
+});
 
-window.addEventListener('keydown', (event => {
-    updateUI();
-  if (game.status !== 'playing') return;
+window.addEventListener('keydown', () => {
+  updateUI();
 
-  if (event.key === 's' || event.key === 'S' || event.key === 'і' || event.key === 'І' && game.status === 'playing') {
-;
+  if (game.status !== 'playing') {
+    return;
+  }
 
+  if (
+    event.key === 's' ||
+    event.key === 'S' ||
+    event.key === 'і' ||
+    (event.key === 'І' && game.status === 'playing')
+  ) {
     game.moveDown();
     likeloop();
     score();
@@ -123,15 +136,21 @@ window.addEventListener('keydown', (event => {
     game.Gameover();
     game.getStatus();
   }
-}));
+});
 
-window.addEventListener('keydown', (event => {
-    updateUI();
-  if (game.status !== 'playing') return;
+window.addEventListener('keydown', () => {
+  updateUI();
 
-  if (event.key === 'w' || event.key === 'W' || event.key === 'ц' || event.key === 'Ц' && game.status === 'playing') {
+  if (game.status !== 'playing') {
+    return;
+  }
 
-
+  if (
+    event.key === 'w' ||
+    event.key === 'W' ||
+    event.key === 'ц' ||
+    (event.key === 'Ц' && game.status === 'playing')
+  ) {
     game.moveUp();
     likeloop();
     score();
@@ -139,23 +158,28 @@ window.addEventListener('keydown', (event => {
     game.Gameover();
     game.getStatus();
   }
-}));
+});
 
-function score () {
-  const scorething  = game.getScore();
-  const score = document.querySelector('.game-score');
-  score.textContent = scorething;
+function score() {
+  const scorething = game.getScore();
 
+  const scoreElement = document.querySelector('.game-score');
+
+  if (scoreElement) {
+    scoreElement.textContent = scorething;
+  }
 }
 
-function highscore () {
-  const scorething = game.highscore;
-  const highscore = document.querySelector('.game-highscore');
-  highscore.textContent = game.highscore;
+function highscore() {
+  const highscoreElement = document.querySelector('.game-highscore');
+
+  if (highscoreElement) {
+    highscoreElement.textContent = game.highscore;
+  }
 }
 
 function likeloop() {
-const board = game.getState();
+  const board = game.getState();
   const cells = document.querySelectorAll('.field-cell');
 
   for (let y = 0; y < 4; y++) {
